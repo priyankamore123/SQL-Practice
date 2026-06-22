@@ -1,5 +1,9 @@
 /*
 ============================================================================
+Practice   : DDL 
+Author     : Priyanka More
+Date       : 22-06-2026
+============================================================================
 SQL Topic  : RENAME TABLE
 Question - Rename StudentDetails TO Student table.
 Rename EmployeeDetails to Employee table.
