@@ -1,6 +1,10 @@
 /*
 ============================================================================
+Practice   : DDL 
+Author     : Priyanka More
+Date       : 22-06-2026
 SQL Topic  : ALTER TABLE
+============================================================================
 Question - Add a column Email to the StudentDetails table.
 Add a column PhoneNO to the Employee table.
 Modify the Salary column to INT.
