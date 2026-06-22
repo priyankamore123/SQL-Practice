@@ -11,7 +11,7 @@ Question - Create a database named CollageDB,LibraryDB,
 */
 -- 1. Create Database
 
-	  CREATE DATABASE CollageDB;
+	CREATE DATABASE CollageDB;
     CREATE DATABASE LibraryDB;
     CREATE DATABASE HospitalDB;
     CREATE DATABASE EmployeeDB;
@@ -33,7 +33,7 @@ Table EmployeeDetails with ID,Name,Department,Salary,City in EmployeeDB.
     
 -- 3. Create Table
 
-		CREATE TABLE StudentDetails (
+	CREATE TABLE StudentDetails (
     			StdID INT,
     			StdName VARCHAR(50),
     			StdAge INT
@@ -41,19 +41,19 @@ Table EmployeeDetails with ID,Name,Department,Salary,City in EmployeeDB.
     
 -- 4. Show Table StudentDetails
 
-SELECT * FROM StudentDetails;
+	SELECT * FROM StudentDetails;
 
 	USE LibraryDB;
-		CREATE TABLE BookDetails (
+	CREATE TABLE BookDetails (
 			BookID INT,
 			BookName VARCHAR(50),
 			BookWriter VARCHAR(50)
     );
     
-SELECT * FROM BookDetails;
+	SELECT * FROM BookDetails;
 
-   USE HospitalDB;
-		CREATE TABLE DoctorDetails (
+   	USE HospitalDB;
+	CREATE TABLE DoctorDetails (
 			DoctorID INT,
 			DoctorName VARCHAR(50),
 			DoctorDepartment VARCHAR(50),
@@ -61,10 +61,10 @@ SELECT * FROM BookDetails;
             DoctorAge INT
     );
     
-SELECT * FROM DoctorDetails;
+	SELECT * FROM DoctorDetails;
     
 	USE EmployeeDB;
-		CREATE TABLE EmployeeDetails (
+	CREATE TABLE EmployeeDetails (
 			EmployeeID INT,
 			EmployeeName VARCHAR(50),
 			EmployeeDepartment VARCHAR(50),
