@@ -274,3 +274,42 @@
 	DROP DATABASE RetailStoreDB;
     
 -- =================================================================================================================
+-- Challenge Questions (Mix of WHERE + AND + OR)
+-- =================================================================================================================
+-- Q1. Display products whose Category is 'Electronics' AND City is 'Pune' OR Price is greater than 50000.
+-- =================================================================================================================
+
+	SELECT * FROM PRODUCTS
+    WHERE (Category = 'Electronics' AND City = 'Pune') OR Price > 50000;
+    
+-- =================================================================================================================
+-- Display products whose Brand is 'Samsung' AND Stock is greater than 20 OR City is 'Mumbai'.
+-- =================================================================================================================
+
+	SELECT * FROM PRODUCTS
+    WHERE (Brand = 'Samsung' AND Stock > 20) OR City = 'Mumbai';
+    
+-- =================================================================================================================
+-- Display products whose Price is greater than 30000 AND Category is 'Furniture' OR Brand is 'LG'.
+-- =================================================================================================================
+	
+    SELECT * FROM PRODUCTS
+    WHERE (Price > 30000 AND Category = 'Furniture') OR Brand = 'LG';
+    
+-- =================================================================================================================
+-- Update the Stock to 150 where City is 'Pune' OR (Category is 'Electronics' AND Price is greater than 40000).
+-- =================================================================================================================
+
+	UPDATE PRODUCTS
+    SET Stock = 150 WHERE City = 'Pune' OR (Category = 'Electronics' AND Price > 40000);
+    SELECT * FROM PRODUCTS;
+    
+-- =================================================================================================================
+-- Delete products where Brand is 'Sony' OR (Stock is less than 10 AND City is 'Delhi').
+-- =================================================================================================================
+
+	DELETE FROM PRODUCTS
+    WHERE Brand = 'Sony' OR (Stock < 10 AND City = 'Delhi');
+    SELECT * FROM PRODUCTS;
+    
+-- =================================================================================================================
