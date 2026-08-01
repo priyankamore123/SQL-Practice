@@ -373,3 +373,221 @@
 	SELECT * FROM Pets WHERE Owner_ID <> 10;
     
 -- ====================================================================================================
+-- Hard 
+-- ====================================================================================================
+-- 36.Update City='Pune' where OwnerID=8.
+
+    UPDATE Owner
+    Set City = "Pune" Where Owner_ID = 8;
+    
+    SELECT * FROM Owner;
+    
+-- ====================================================================================================
+-- 37.Update Phone for OwnerID=5.
+
+	UPDATE Owner 
+    SET Phone = "2545474847" WHERE Owner_ID = 5;
+    
+    SELECT * FROM Owner;
+    
+-- ====================================================================================================
+-- 38.Update Doctor specialization to 'Orthopedic' where DoctorID=4.
+
+	UPDATE Doctors
+    SET Specialization = "Orthopedic" WHERE Doctor_ID = 4;
+    
+    SELECT * FROM Doctors;
+    
+-- ====================================================================================================
+-- 39.Update Pet age to 6 where PetID=9.
+
+	UPDATE Pets
+    SET Age = 6 WHERE Pet_ID = 9;
+    
+    SELECT * FROM Pets;
+    
+-- ====================================================================================================
+-- 40.Update Appointment status='Completed' where AppointmentID=12.
+
+	UPDATE Appoinments 
+    SET Status = "Completed" WHERE Appoinment_ID = 12;
+    
+    SELECT * FROM Appoinments;
+    
+-- ====================================================================================================
+-- 41.Update PetType='Rabbit' where Breed='Persian'.
+
+	UPDATE Pets 
+    SET Pet_Type = "Rabbit" WHERE Breed = "Persian";
+    
+	SELECT * FROM Pets;
+     
+-- ====================================================================================================
+-- 42.Update City='Kolhapur' where Gender='Female' AND City='Pune'.
+
+	UPDATE Owner 
+    SET City = "Kolhapur" WHERE Gender = "Female" AND City = "Pune";
+    
+    SELECT * FROM Owner;
+    
+-- ====================================================================================================
+-- 43.Update Experience=Experience+2 where specialization='Animal Physician'.
+
+	UPDATE Doctors
+    SET Experiance = Experiance + 2 WHERE Specialization = "Animal Physician";
+    
+	SELECT * FROM Doctors;
+    
+-- ====================================================================================================
+-- 44.Delete owners whose city='Nagpur'.
+
+	SELECT * FROM Owner WHERE City = "Nagpur";
+    SELECT * FROM Pets;
+    SELECT * FROM Appoinments;
+	SELECT * FROM Pets WHERE Owner_ID IN (5 ,15);
+    
+	DELETE FROM Appoinments				-- Cannot delete Owner directly because Pets table has a Foreign Key (Owner_ID).
+    WHERE Pet_ID IN (5 , 15);			-- First delete related records from child tables, then delete the Owner.
+    
+    DELETE From Pets 
+    WHERE Owner_Id IN (5 ,15);
+    
+    DELETE FROM Owner 
+    WHERE City = "Nagpur";
+    
+    SELECT * FROM Pets;
+
+-- ====================================================================================================
+-- 45.Delete pets whose age<1.
+
+	DELETE FROM Pets
+    WHERE Age < 1;
+    
+    SELECT * FROM Pets;
+    
+-- ====================================================================================================
+-- 46.Delete appointments having status='Cancelled'.
+
+	DELETE FROM Appoinments
+    WHERE Status = "Cancelled";
+    
+    SELECT * FROM Appoinments;
+-- ====================================================================================================
+-- 47.Delete doctors having experience<2.
+
+	DELETE FROM Doctors
+    WHERE Experiance < 2;
+    
+    SELECT * FROM Doctors;
+    
+-- ====================================================================================================
+-- 48.Delete pets whose type='Bird' AND age=1.
+	
+	SELECT * FROM Pets; 										-- Delete child records first, then parent records.
+	SELECT * FROM Appoinments WHERE Pet_ID = 1;
+     
+	DELETE FROM Appoinments 
+	WHERE Pet_ID = 4;
+    
+	DELETE FROM Pets
+    WHERE Pet_Type = "Bird" AND Age = 1;
+    
+    SELECT * FROM Pets WHERE Pet_Type = "Bird" AND Age = 1;
+ 
+-- ====================================================================================================
+-- 49.Delete owners who is from Pune AND Phone start with 3.
+
+	DELETE FROM Owner 
+    WHERE City = "Pune" AND Phone LIKE "3%";
+    
+    SELECT * FROM Owner WHERE City = "Pune" AND Phone LIKE "3%";
+    
+-- ====================================================================================================
+-- 50.Delete appointments where DoctorID=5 AND status='Pending'.
+
+	DELETE FROM Appoinments 
+    WHERE Doctor_ID = 5 AND Status = "Pending";
+    
+    SELECT * FROM Appoinments WHERE Doctor_ID = 5 AND Status = "Pending";
+    
+-- ====================================================================================================
+-- Challenge Questions
+-- ====================================================================================================
+-- 51.Add a new column Email to Owners table.
+
+	ALTER TABLE Owner
+    ADD Column Email VARCHAR (200);
+    
+    SELECT * FROM Owner;
+    
+-- ====================================================================================================
+-- 52.Add a column PetColor in Pets.
+
+	ALTER TABLE Pets
+    ADD Column PetColor VARCHAR(50);
+    
+    SELECT * FROM Pets;
+    
+-- ====================================================================================================
+-- 53.Rename column Phone to MobileNumber.
+
+	ALTER TABLE Owner
+    RENAME Column Phone TO Mobilenumber;
+    
+    SELECT * FROM Owner;
+    
+-- ====================================================================================================
+-- 54.Increase MobileNumber column size.
+
+	ALTER TABLE Owner
+    MODIFY COLUMN Mobilenumber VARCHAR(12);
+    
+-- ====================================================================================================
+-- 55.Add a column Fees in Doctors.
+
+	ALTER TABLE Doctors
+    ADD COLUMN Fees INT;
+    
+    SELECT * FROM Doctors;
+    
+-- ====================================================================================================
+-- 56.Delete Fees column.
+
+	ALTER TABLE Doctors
+    DROP COLUMN Fees;
+    
+    SELECT * FROM Doctors;
+    
+-- ====================================================================================================
+-- 57.Rename table Doctors to VeterinaryDoctors.
+
+	ALTER TABLE Doctors
+    RENAME TO VeterinaryDoctors;
+    
+    SHOW TABLES;
+    
+-- ====================================================================================================
+-- 58.Change PetColor datatype.
+
+	ALTER TABLE Pets
+    MODIFY COLUMN PetColor CHAR(100) ;
+    
+    DESC Pets;
+    
+-- ====================================================================================================
+-- 59.Add a column AppointmentTime.
+
+	ALTER TABLE Appoinments
+    ADD COLUMN AppoinmentTime TIME;
+    
+    SELECT * FROM Appoinments;
+    
+-- ====================================================================================================
+-- 60.Drop AppointmentTime column.
+
+	ALTER TABLE Appoinments
+    DROP COLUMN AppoinmentTime;
+    
+    SELECT * FROM Appoinments;
+    
+-- ====================================================================================================
