@@ -733,3 +733,65 @@
     WHERE Visit_Date BETWEEN "2026-04-01" AND "2026-05-31";
     
 -- ====================================================================================================
+-- ====================================================================================================
+-- Challenge Questions (81-90)
+-- ====================================================================================================
+-- 81. Display all owners sorted by Owner_Name in ascending order.
+
+	SELECT Owner_Name FROM Owner
+	ORDER BY Owner_Name ASC;
+    
+-- ====================================================================================================
+-- 82. Display all pets sorted by Age in descending order.
+
+	SELECT * FROM Pets
+    ORDER BY Age DESC;
+    
+-- ====================================================================================================
+-- 83. Display all appointments sorted by Visit_Date.
+
+	SELECT * FROM Appoinments 
+    ORDER BY Visit_Date ;
+    
+-- ====================================================================================================
+-- 84. Display unique cities from the Owner table.
+
+	SELECT DISTINCT City FROM Owner;
+    
+-- ====================================================================================================
+-- 85. Display unique pet types from the Pets table.
+
+	SELECT DISTINCT Pet_Type From Pets;
+    
+-- ====================================================================================================
+-- 86. Display unique appointment status from the Appoinments table.
+
+	SELECT DISTINCT Status From Appoinments;
+    
+-- ====================================================================================================
+-- 87. Display the first 5 records from the Owner table.
+
+	SELECT * FROM Owner
+    LIMIT 5;
+    
+-- ====================================================================================================
+-- 88. Display the first 10 records from the Pets table.
+
+	SELECT * FROM Pets
+    LIMIT 10;
+    
+-- ====================================================================================================
+-- 89. Display the top 3 oldest pets.
+
+	SELECT * FROM Pets
+    ORDER BY Age DESC
+    LIMIT 3;
+    
+-- ====================================================================================================
+-- 90. Display the first 5 appointments sorted by Visit_Date.
+
+	SELECT * FROM Appoinments
+    ORDER BY Visit_Date
+    LIMIT 5;
+    
+-- ====================================================================================================
