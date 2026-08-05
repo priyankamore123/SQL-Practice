@@ -591,3 +591,145 @@
     SELECT * FROM Appoinments;
     
 -- ====================================================================================================
+-- Challenge Questions (61-70)
+-- ====================================================================================================
+-- 61. Display all owners whose city is 'Kolhapur'.
+	
+    SELECT * FROM Owner
+    WHERE City = "Kolhapur";
+	
+-- ====================================================================================================
+-- 62. Display pets whose age is greater than 5.
+
+	SELECT * FROM Pets
+    WHERE Age > 5;
+    
+-- ====================================================================================================
+-- 63. Display veterinarydoctors whose specialization is 'Orthopedic'.
+
+	SELECT * FROM veterinarydoctors
+	WHERE Specialization = "Orthopedic";
+	
+-- ====================================================================================================
+-- 64. Display appointments whose status is 'Completed'.
+
+	SELECT * FROM Appoinments
+    WHERE Status = "Completed";
+    
+-- ====================================================================================================
+-- 65. Display owners whose gender is 'Female' AND city is 'Pune'.
+
+	SELECT * FROM Owner
+    WHERE Gender = "Female";
+    
+-- ====================================================================================================
+-- 66. Display pets whose type is 'Dog' OR age is greater than 7.
+
+	SELECT * FROM Pets
+    WHERE Pet_Type = "Dog" OR Age > 7;
+    
+-- ====================================================================================================
+-- 67. Display owners whose city is NOT 'Mumbai'.
+
+	SELECT * FROM Owner
+    WHERE City <> "Mumbai";
+    
+-- ====================================================================================================
+-- 68. Display pets whose breed is 'Labrador' AND age is less than 5.
+
+	SELECT * FROM Pets
+    WHERE Breed = "Labrador" AND Age < 5;
+    
+-- ====================================================================================================
+-- 69. Display appointments whose status is 'Pending' OR Visit_Date is after '2025-07-01'.
+
+	SELECT * FROM Appoinments 
+    WHERE Status = "Pending" OR Visit_Date > "2025-07-01";
+    
+-- ====================================================================================================
+-- 70. Display doctors whose experience is greater than 5 years.
+
+	SELECT * FROM Veterinarydoctors
+    WHERE Experiance > 5;
+    
+-- ====================================================================================================
+-- Challenge Questions 
+-- ====================================================================================================
+-- 71. Update the city of owner 'Rahul Patil' to 'Satara'.
+
+	UPDATE Owner
+    SET City = "Satara"
+    WHERE Owner_Name = "Rahul Patil";
+    
+    SELECT * FROM Owner;
+    
+-- ====================================================================================================
+-- 72. Increase the age of pet 'Bruno' by 1 year.
+
+	UPDATE Pets
+    SET Age = Age + 1
+    WHERE Pet_Name = "Bruno";
+    
+    SELECT * FROM Pets;
+    
+-- ====================================================================================================
+-- 73. Change appointment status from 'Pending' to 'Completed'.
+
+	UPDATE Appoinments
+    SET Status = "Complete"
+    WHERE Status = "Pending";
+    
+    SELECT * FROM Appoinments;
+    
+-- ====================================================================================================
+-- 74. Delete owners whose city is 'Satara'.
+--     (Observe the Foreign Key error and explain why it occurs.)
+
+	SELECT * FROM Owner WHERE City = "Satara";      -- Child record must be deleted first because of the Foreign Key relationship.
+    SELECT * FROM Pets WHERE Owner_ID = 1;
+    
+    DELETE FROM Appoinments
+    WHERE Pet_ID = 1;
+    
+    DELETE FROM Pets
+    WHERE Owner_ID = 1;
+    
+    DELETE FROM Owner 
+    WHERE City = "Satara";
+    
+-- ====================================================================================================
+-- 75. Delete pets whose age is greater than 12.
+
+	DELETE FROM Pets
+    WHERE Age > 12;
+    
+-- ====================================================================================================
+-- 76. Display pets whose name starts with 'B'.
+
+	SELECT * FROM Pets
+    WHERE Pet_Name LIKE "B%";
+    
+-- ====================================================================================================
+-- 77. Display owners whose MobileNumber starts with '98'.
+
+	SELECT * FROM Owner 
+    WHERE Mobilenumber Like "98%";
+    
+-- ====================================================================================================
+-- 78. Display doctors whose name ends with 'kar'.
+
+	SELECT * FROM veterinarydoctors
+    WHERE Doctor_Name LIKE "%r";
+    
+-- ====================================================================================================
+-- 79. Display pets whose name contains 'oo'.
+
+	SELECT * FROM Pets
+    WHERE Pet_Name LIKE "%a";
+-- ====================================================================================================
+-- 80. Display appointments between '2026-04-01' and '2026-05-31'.
+
+	SELECT * FROM Appoinments
+    WHERE Visit_Date BETWEEN "2026-04-01" AND "2026-05-31";
+    
+-- ====================================================================================================
