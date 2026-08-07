@@ -795,3 +795,76 @@
     LIMIT 5;
     
 -- ====================================================================================================
+-- ====================================================================================================
+-- Challenge Questions (91-100)
+-- ====================================================================================================
+-- 91. Display all female owners from Kolhapur sorted by Owner_Name in ascending order.
+
+	SELECT * FROM Owner 
+    WHERE Gender = "Female" AND City = "Kolhapur"
+    ORDER BY Owner_Name ASC;
+    
+-- ====================================================================================================
+-- 92. Display the first 5 dogs sorted by Age in descending order.
+
+	SELECT * FROM Pets
+    WHERE Pet_Type = "Dog"
+    ORDER BY Age DESC
+    LIMIT 5;
+    
+-- ====================================================================================================
+-- 93. Display unique cities except Mumbai.
+
+	SELECT DISTINCT City FROM Owner
+    WHERE City <> "Mumbai";
+    
+-- ====================================================================================================
+-- 94. Display the top 3 youngest pets.
+
+	SELECT * FROM Pets
+    ORDER BY Age 
+    LIMIT 3;
+    
+-- ====================================================================================================
+-- 95. Display appointments whose status is 'Completed' sorted by Visit_Date.
+
+	SELECT * FROM Appoinments
+    WHERE Status = "Completed"
+    ORDER BY Visit_Date;
+    
+-- ====================================================================================================
+-- 96. Display owners whose MobileNumber starts with '98' OR city is 'Kolhapur'.
+
+	SELECT * FROM Owner
+    WHERE Mobilenumber LIKE "98%" OR City = "Kolhapur";
+    
+-- ====================================================================================================
+-- 97. Display pets whose age is NOT greater than 5 sorted by Pet_Name.
+
+	SELECT * FROM Pets
+    WHERE Age <= 5
+    ORDER BY Pet_Name;
+    
+-- ====================================================================================================
+-- 98. Display unique pet breeds sorted alphabetically.
+
+	SELECT DISTINCT Breed 
+    FROM Pets
+    ORDER BY BREED;
+    
+-- ====================================================================================================
+-- 99. Display the first 5 owners whose city is NOT 'Pune'.
+
+	SELECT * FROM Owner
+    WHERE City <> "Pune"
+    LIMIT 5;
+    
+-- ====================================================================================================
+-- 100. Display the top 5 oldest pets whose Pet_Type is 'Dog'.
+
+	SELECT * FROM Pets
+    WHERE Pet_Type = "Dog"
+    ORDER BY Age DESC
+    LIMIT 5;
+    
+-- ====================================================================================================
