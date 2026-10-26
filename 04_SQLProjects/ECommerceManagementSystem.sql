@@ -410,17 +410,155 @@
 -- 12. Remove the Delivery_Date column from CustomerOrders.
 -- ==================================================================================================== 
 
+		ALTER TABLE Customer_Orders
+        DROP COLUMN Delivery_Date;
+        
+        SELECT * FROM Customer_Orders;
+        
 -- ==================================================================================================== 
 -- 13. Display the structure of the Products table.
 -- ==================================================================================================== 
 
+		DESC Products;
+        
 -- ==================================================================================================== 
 -- 14. Display all tables available in OnlineShoppingDB.
 -- ==================================================================================================== 
 
+		SHOW TABLES;
+        
+-- ==================================================================================================== 
+-- 16. Create a new table named Reviews with Review_ID, Customer_ID,
+--     Product_ID, Rating and Review_Date columns.
 -- ==================================================================================================== 
 
+		CREATE TABLE Reviews(
+				Review_ID INT,
+                Customer_ID INT,
+                Product_ID INT,
+                Rating DECIMAL(2,2),
+                Review_Date DATE
+                );
+            
+-- ==================================================================================================== 
+-- 17. Add a PRIMARY KEY constraint to Review_ID in Reviews.
+-- ==================================================================================================== 
+		
+        ALTER TABLE Reviews
+        MODIFY COLUMN Review_ID INT PRIMARY KEY;
+        
+-- ==================================================================================================== 
+-- 18. Add a FOREIGN KEY constraint on Customer_ID in Reviews
+--     referencing Customers table.
+-- ==================================================================================================== 
+		
+        ALTER TABLE Reviews
+        ADD CONSTRAINT FK_Reviews_Customers
+        FOREIGN KEY (Customer_ID)
+        REFERENCES Customers(Customer_ID);
+        
+-- ==================================================================================================== 
+-- 19. Add a FOREIGN KEY constraint on Product_ID in Reviews
+--     referencing Products table.
+-- ==================================================================================================== 
 
+		ALTER TABLE Reviews
+        ADD FOREIGN KEY (Product_ID)
+        REFERENCES Products(Product_ID);
+        
+-- ==================================================================================================== 
+-- 20. Add a UNIQUE constraint to the Mobile_Number column in Customers.
+-- ==================================================================================================== 
+
+		ALTER TABLE Customers
+        MODIFY COLUMN Contact_Number VARCHAR(15) UNIQUE;
+        
+        Desc Customers;
+        
+-- ==================================================================================================== 
+-- 21. Add a NOT NULL constraint to Product_Name in Products.
+-- ==================================================================================================== 
+
+		ALTER TABLE Products
+        MODIFY COLUMN Product_Name VARCHAR(100) NOT NULL;
+        
+        DESC Products;
+        
+-- ==================================================================================================== 
+-- 22. Add a DEFAULT value 'Available' to Product_Status in Products.
+-- ==================================================================================================== 
+
+		ALTER TABLE Products
+        MODIFY COLUMN Product_Status VARCHAR(50) DEFAULT 'Available';
+        
+-- ==================================================================================================== 
+-- 23. Add a CHECK constraint to ensure that Product Price is greater than 0.
+-- ==================================================================================================== 
+	
+		ALTER TABLE Products
+        ADD CONSTRAINT CHK_Product_Price
+        CHECK (Price > 0);
+        
+        DESC Products;
+		
+-- ==================================================================================================== 
+-- 24. Add a CHECK constraint to ensure that Stock_Quantity is not negative.
+-- ==================================================================================================== 
+
+		ALTER TABLE Products
+        ADD CONSTRAINT CHK_Stock_Quantity
+        CHECK (Stock_Quantity >0);
+        
+        DESC Products;
+        
+-- ==================================================================================================== 
+-- 25. Add a DEFAULT value 'Pending' to Order_Status in CustomerOrders.
+-- ==================================================================================================== 
+
+		ALTER TABLE Customer_Orders
+        MODIFY COLUMN Order_Status VARCHAR(50)  DEFAULT 'Pending';
+        
+-- ==================================================================================================== 
+-- 26. Add a new column Discount_Percentage with DECIMAL(5,2) datatype
+--     to Products.
+-- ==================================================================================================== 
+
+		ALTER TABLE Products
+        ADD COLUMN Discount_Percentage DECIMAL(5,2);
+        
+        DESC Products;
+        
+-- ==================================================================================================== 
+-- 27. Change the datatype of Mobile_Number in Customers to VARCHAR(20).
+-- ==================================================================================================== 
+
+		ALTER TABLE Customers
+        MODIFY COLUMN Contact_Number VARCHAR(20);
+        
+        DESC Customers;
+-- ==================================================================================================== 
+-- 28. Rename the ProductSuppliers table to Suppliers.
+-- ==================================================================================================== 
+
+		RENAME TABLE productsuppliers TO Suppliers;
+        SHOW TABLES;
+        
+-- ==================================================================================================== 
+-- 29. Remove the Discount_Percentage column from Products.
+-- ==================================================================================================== 
+
+		ALTER TABLE Products
+        DROP COLUMN Discount_Percentage;
+        
+        DESC Products;
+        
+-- ==================================================================================================== 
+-- 30. Remove the Reviews table permanently.
+-- ==================================================================================================== 
+
+		DROP TABLE Reviews;
+        
+-- ==================================================================================================== 
 
 
 
