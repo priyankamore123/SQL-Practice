@@ -348,7 +348,7 @@
         ADD COLUMN Email VARCHAR(100);
         
 -- ==================================================================================================== 
--- 04. Add a new column Delivery_Date to the CustomerOrders table.
+-- 04. Add a new column Delivery_Date to the Customer_Orders table.
 -- ==================================================================================================== 
 
 		ALTER TABLE Customer_Orders
@@ -598,6 +598,21 @@
                 PRIMARY KEY (Order_ID , Products_ID)
 			);
             
+		INSERT INTO OrderProductMapping VALUES
+				(301, 201),
+				(301, 202),
+				(302, 203),
+				(302, 204),
+				(303, 205),
+				(303, 206),
+				(304, 207),
+				(305, 208),
+				(306, 209),
+				(307, 210),
+				(308, 201),
+				(309, 202),
+				(310, 203);
+            
             DESC OrderProductMapping;
             
 -- ==================================================================================================== 
@@ -693,7 +708,101 @@
         SHOW TABLES;
         
 -- ==================================================================================================== 
+-- 46. Update the Return_Status column in the Customer_Orders table by assigning appropriate 
+-- return statuses to 10 existing orders.
+-- ==================================================================================================== 
+		
+        select * from Customer_Orders;
+		
+        UPDATE Customer_Orders
+        SET Return_Status = "Returned"
+        WHERE Order_ID IN (301, 305, 307, 316, 320);
+        
+        UPDATE Customer_Orders
+        SET Return_Status = "Return Requested"
+        WHERE Order_ID IN (302, 310, 328);
+        
+        UPDATE Customer_Orders
+        SET Return_Status = "Return Approved"
+        WHERE Order_ID IN (314, 322, 330);
 
+-- ==================================================================================================== 
+-- 47. Add Sample Data In Order_Items Table
+-- ==================================================================================================== 
+        
+        INSERT INTO Order_Items VALUES
+				(1, 301, 201, 2, 1500.00, 3000.00),
+				(2, 302, 202, 1, 2500.00, 2500.00),
+				(3, 303, 203, 3, 500.00, 1500.00),
+				(4, 304, 204, 2, 1200.00, 2400.00),
+				(5, 305, 205, 1, 3500.00, 3500.00),
+				(6, 306, 206, 4, 250.00, 1000.00),
+				(7, 307, 207, 2, 1800.00, 3600.00),
+				(8, 308, 208, 1, 4500.00, 4500.00),
+				(9, 309, 209, 5, 300.00, 1500.00),
+				(10, 310, 210, 2, 2200.00, 4400.00);
+                
+		SELECT * FROM order_items;
+
+-- ==================================================================================================== 
+-- 48. Create a table named ProductWarranty with Warranty_ID,
+--     Product_ID, Warranty_Period and Warranty_Description columns.
+-- ==================================================================================================== 
+
+		CREATE TABLE ProductWarranty (
+				Wrrenty_ID INT ,
+                Product_ID INT,
+                Warranty_Description VARCHAR(100)
+			);
+            
+-- ==================================================================================================== 
+-- 49. Add a FOREIGN KEY between ProductWarranty and Products
+--     with ON DELETE CASCADE.
+-- ==================================================================================================== 
+		
+        ALTER TABLE ProductWarranty
+        ADD FOREIGN KEY (Product_ID)
+        REFERENCES Products (Product_ID);
+        
+-- ==================================================================================================== 
+-- 50. Create a new table named CustomerAddress with Address_ID,
+--     Customer_ID, City, State and Pincode columns.
+-- ==================================================================================================== 
+		
+        CREATE TABLE CustomerAddress (
+				Address_ID INT,
+                Customer_ID INT,
+                City VARCHAR(100),
+                State VARCHAR(100),
+                Pincode INT
+			);
+            
+-- ==================================================================================================== 
+-- 51. Add a FOREIGN KEY between CustomerAddress and Customers
+--     with ON UPDATE CASCADE.
+-- ==================================================================================================== 
+		
+        ALTER TABLE CustomerAddress
+        ADD FOREIGN KEY (Customer_ID)
+        REFERENCES Customers(Customer_ID);
+        
+-- ==================================================================================================== 
+-- 52. Add a FOREIGN KEY with ON DELETE SET NULL to a new table
+--     referencing Customers.
+-- ==================================================================================================== 
+
+-- ==================================================================================================== 
+-- 53. Create a composite index on Category_ID and Price in Products.
+-- ==================================================================================================== 
+
+-- ==================================================================================================== 
+-- 54. Modify the Products table by adding a column named
+--     Manufacturing_Date with DATE datatype and a DEFAULT value.
+-- ==================================================================================================== 
+
+-- ==================================================================================================== 
+-- 55. Drop the OnlineShoppingTestDB database permanently.
+-- ==================================================================================================== 
 
 
 
